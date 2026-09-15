@@ -1,0 +1,96 @@
+.login-card {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 36px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-card h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.login-card .subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.form-extras {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 4px 0 22px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2563eb;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.checkbox-group label {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 24px;
+    }
+
+    .login-card h1 {
+        font-size: 22px;
+    }
+
+    .form-extras {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

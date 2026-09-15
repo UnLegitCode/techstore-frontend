@@ -1,0 +1,54 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 64px 0;
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-head h2 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    margin-bottom: 8px;
+}
+
+.section-head p {
+    font-size: 15px;
+    color: #64748b;
+}
+
+.categories {
+    background: #ffffff;
+    padding-top: 56px;
+}
+
+.catalog {
+    background: #f8fafc;
+}
+
+.features {
+    background: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    section {
+        padding: 48px 0;
+    }
+
+    .section-head h2 {
+        font-size: 26px;
+    }
+}

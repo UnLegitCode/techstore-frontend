@@ -1,0 +1,32 @@
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 36px;
+}
+
+.filter-chip {
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.filter-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.filter-chip.active {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}

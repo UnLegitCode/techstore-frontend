@@ -1,0 +1,133 @@
+.product-card {
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.18);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.product-image {
+    position: relative;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+    font-size: 72px;
+}
+
+.product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: #dc2626;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.product-badge.new {
+    background: #16a34a;
+}
+
+.product-body {
+    padding: 16px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-category {
+    font-size: 11px;
+    font-weight: 600;
+    color: #2563eb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    min-height: 40px;
+    color: #0f172a;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 14px;
+}
+
+.stars {
+    color: #f59e0b;
+    letter-spacing: 1px;
+}
+
+.product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.product-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-current {
+    font-size: 19px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.price-old {
+    font-size: 12px;
+    color: #64748b;
+    text-decoration: line-through;
+}
+
+.add-to-cart {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eff6ff;
+    color: #2563eb;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.add-to-cart:hover {
+    background: #2563eb;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.add-to-cart svg {
+    width: 20px;
+    height: 20px;
+}

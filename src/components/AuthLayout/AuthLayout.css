@@ -1,0 +1,36 @@
+.auth-layout {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+    overflow: hidden;
+}
+
+.auth-layout::before,
+.auth-layout::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.auth-layout::before {
+    width: 400px;
+    height: 400px;
+    background: #3b82f6;
+    top: -100px;
+    left: -100px;
+}
+
+.auth-layout::after {
+    width: 350px;
+    height: 350px;
+    background: #06b6d4;
+    bottom: -100px;
+    right: -100px;
+}
