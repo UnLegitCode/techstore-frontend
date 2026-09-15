@@ -1,0 +1,132 @@
+.notfound-card {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 36px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.5s ease-out;
+    text-align: center;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notfound-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 12px 0 20px;
+    font-size: 84px;
+    font-weight: 800;
+    letter-spacing: -4px;
+    line-height: 1;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+}
+
+.notfound-code .digit {
+    display: inline-block;
+}
+
+.notfound-code .zero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 4px solid currentColor;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    -webkit-text-fill-color: initial;
+    color: #fff;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.notfound-code .zero svg {
+    width: 34px;
+    height: 34px;
+    stroke: #fff;
+    stroke-width: 2.5;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+.notfound-card h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.notfound-card .subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+.footer-hint {
+    margin-top: 22px;
+    font-size: 12px;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.footer-hint code {
+    font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 12px;
+    padding: 2px 6px;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 5px;
+}
+
+@media (max-width: 480px) {
+    .notfound-card {
+        padding: 30px 24px;
+    }
+
+    .notfound-card h1 {
+        font-size: 20px;
+    }
+
+    .notfound-code {
+        font-size: 64px;
+        letter-spacing: -3px;
+    }
+
+    .notfound-code .zero {
+        width: 56px;
+        height: 56px;
+        border-width: 3px;
+    }
+
+    .notfound-code .zero svg {
+        width: 26px;
+        height: 26px;
+    }
+}
