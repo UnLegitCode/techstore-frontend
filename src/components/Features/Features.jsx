@@ -25,4 +25,6 @@ function Features() {
     );
 }
 
+Features.propTypes = {}
+
 export default Features;

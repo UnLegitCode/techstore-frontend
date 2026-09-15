@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import './Input.css';
+import PropTypes from "prop-types";
 
 const EyeIcon = () => (
     <svg
@@ -102,5 +103,18 @@ function Input(
         </div>
     );
 }
+
+Input.propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['text', 'email', 'password', 'number', 'tel', 'url']),
+    icon: PropTypes.string,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    error: PropTypes.string,
+    state: PropTypes.string,
+    autoComplete: PropTypes.string,
+};
 
 export default Input;

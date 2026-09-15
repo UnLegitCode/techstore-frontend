@@ -1,5 +1,6 @@
 import { getPasswordStrength } from '../../utils/password_utils.js';
 import './PasswordStrength.css';
+import PropTypes from "prop-types";
 
 function PasswordStrength({ password }) {
     const { level, label, filled, color } = getPasswordStrength(password);
@@ -19,6 +20,10 @@ function PasswordStrength({ password }) {
             </div>
         </>
     );
+}
+
+PasswordStrength.propTypes = {
+    password: PropTypes.string.isRequired,
 }
 
 export default PasswordStrength;

@@ -1,5 +1,6 @@
 import { categories } from '../../data/products';
 import './Filters.css';
+import PropTypes from "prop-types";
 
 function Filters({ active, onChange }) {
     const chips = [{ id: 'all', name: 'Все' }, ...categories];
@@ -19,5 +20,10 @@ function Filters({ active, onChange }) {
         </div>
     );
 }
+
+Filters.propTypes = {
+    active: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    onChange: PropTypes.func.isRequired,
+};
 
 export default Filters;

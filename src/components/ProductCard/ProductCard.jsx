@@ -2,6 +2,7 @@ import {formatters} from '../../utils/formatters.js';
 import {renderers} from '../../utils/renderers.js';
 import './ProductCard.css';
 import PlusIcon from "../Icons/PlusIcon.jsx";
+import PropTypes from "prop-types";
 
 function ProductCard({product, categoryName, onAdd}) {
     const {title, price, oldPrice, rating, reviews, emoji, badge} = product;
@@ -38,5 +39,19 @@ function ProductCard({product, categoryName, onAdd}) {
         </article>
     );
 }
+
+ProductCard.propTypes = {
+    product: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        oldPrice: PropTypes.number,
+        rating: PropTypes.number.isRequired,
+        reviews: PropTypes.number.isRequired,
+        emoji: PropTypes.string.isRequired,
+        badge: PropTypes.oneOf(['sale', 'new']),
+    }).isRequired,
+    categoryName: PropTypes.string.isRequired,
+    onAdd: PropTypes.func.isRequired,
+};
 
 export default ProductCard;

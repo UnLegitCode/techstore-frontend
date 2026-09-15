@@ -22,4 +22,6 @@ function Toast() {
     );
 }
 
+Toast.propTypes = {}
+
 export default Toast;

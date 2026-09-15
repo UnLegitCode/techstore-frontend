@@ -1,5 +1,6 @@
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductGrid.css';
+import PropTypes from "prop-types";
 
 function ProductGrid({ products, getCategoryName, onAdd }) {
     if (products.length === 0) {
@@ -35,5 +36,24 @@ function ProductGrid({ products, getCategoryName, onAdd }) {
         </div>
     );
 }
+
+ProductGrid.propTypes = {
+    products: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            category: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            title: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            oldPrice: PropTypes.number,
+            rating: PropTypes.number.isRequired,
+            reviews: PropTypes.number.isRequired,
+            emoji: PropTypes.string.isRequired,
+            badge: PropTypes.oneOf(['sale', 'new']),
+        })
+    ).isRequired,
+    getCategoryName: PropTypes.func.isRequired,
+    onAdd: PropTypes.func.isRequired,
+};
+
 
 export default ProductGrid;

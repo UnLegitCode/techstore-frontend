@@ -1,4 +1,5 @@
 import './SuccessMessage.css';
+import PropTypes from "prop-types";
 
 function SuccessMessage({ email }) {
     return (
@@ -15,6 +16,10 @@ function SuccessMessage({ email }) {
             </div>
         </div>
     );
+}
+
+SuccessMessage.propTypes = {
+    email: PropTypes.string.isRequired,
 }
 
 export default SuccessMessage;

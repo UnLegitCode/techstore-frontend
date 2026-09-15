@@ -5,6 +5,7 @@ import { useCart } from '../../contexts/CartContext';
 import './Header.css';
 import CartIcon from "../Icons/CartIcon.jsx";
 import SearchIcon from "../Icons/SearchIcon.jsx";
+import PropTypes from "prop-types";
 
 function Header({ search, onSearchChange }) {
     const navigate = useNavigate();
@@ -51,5 +52,10 @@ function Header({ search, onSearchChange }) {
         </header>
     );
 }
+
+Headers.propTypes = {
+    active: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
 
 export default Header;

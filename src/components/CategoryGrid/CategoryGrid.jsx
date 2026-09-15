@@ -1,5 +1,6 @@
 import { categories } from '../../data/products';
 import './CategoryGrid.css';
+import PropTypes from "prop-types";
 
 function CategoryGrid({ onSelect }) {
     return (
@@ -18,5 +19,9 @@ function CategoryGrid({ onSelect }) {
         </div>
     );
 }
+
+CategoryGrid.propTypes = {
+    onSelect: PropTypes.func.isRequired,
+};
 
 export default CategoryGrid;
