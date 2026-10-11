@@ -1,0 +1,46 @@
+.quantity-stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    background: #f1f5f9;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.qty-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: none;
+    border-radius: 9px;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover:not(:disabled) {
+    background: #2563eb;
+    color: #fff;
+}
+
+.qty-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.qty-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.qty-value {
+    min-width: 36px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+}

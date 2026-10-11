@@ -136,6 +136,38 @@
     height: 16px;
 }
 
+.account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 240px;
+    padding: 8px 14px;
+    background: #eff6ff;
+    border: 2px solid #dbeafe;
+    border-radius: 12px;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.account-chip svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.account-email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 @media (max-width: 768px) {
     .header .container {
         padding: 0 16px;
@@ -152,5 +184,10 @@
 
     .header-btn {
         display: none;
+    }
+
+    .account-chip {
+        max-width: 150px;
+        padding: 8px 10px;
     }
 }

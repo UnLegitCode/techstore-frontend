@@ -65,6 +65,17 @@
     cursor: pointer;
 }
 
+.login-card .form-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin: -12px 0 16px;
+}
+
 .forgot-link {
     font-size: 13px;
     font-weight: 600;

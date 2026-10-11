@@ -1,0 +1,17 @@
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 480px) {
+    .product-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
