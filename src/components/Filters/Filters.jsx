@@ -1,9 +1,8 @@
-import { categories } from '../../data/products';
 import './Filters.css';
 import PropTypes from "prop-types";
 
-function Filters({ active, onChange }) {
-    const chips = [{ id: 'all', name: 'Все' }, ...categories];
+function Filters({ categories, active, onChange }) {
+    const chips = [{ id: 'all', title: 'Все' }, ...categories];
 
     return (
         <div className="filters">
@@ -14,7 +13,7 @@ function Filters({ active, onChange }) {
                     className={`filter-chip ${active === chip.id ? 'active' : ''}`}
                     onClick={() => onChange(chip.id)}
                 >
-                    {chip.name}
+                    {chip.title}
                 </button>
             ))}
         </div>
@@ -22,6 +21,12 @@ function Filters({ active, onChange }) {
 }
 
 Filters.propTypes = {
+    categories: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            title: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     active: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     onChange: PropTypes.func.isRequired,
 };

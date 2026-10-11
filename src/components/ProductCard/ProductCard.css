@@ -127,6 +127,17 @@
     transform: scale(1.05);
 }
 
+.add-to-cart:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+}
+
+.add-to-cart:disabled:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
 .add-to-cart svg {
     width: 20px;
     height: 20px;

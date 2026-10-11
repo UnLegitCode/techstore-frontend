@@ -36,6 +36,17 @@
     margin-bottom: 28px;
 }
 
+.register-card .form-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
 @media (max-width: 480px) {
     .register-card {
         padding: 30px 24px;

@@ -5,6 +5,8 @@ import Button from '../../components/Button/Button';
 import Divider from '../../components/Divider/Divider';
 import PasswordStrength from '../../components/PasswordStrength/PasswordStrength';
 import useRegisterValidation from '../../hooks/useRegisterValidation';
+import { useRegisterMutation } from '../../hooks/mutations/useRegisterMutation';
+import { useAuth } from '../../contexts/AuthContext';
 import './RegisterPage.css';
 import RegisterIcon from "../../components/Icons/RegisterIcon.jsx";
 import LoginIcon from "../../components/Icons/LoginIcon.jsx";
@@ -12,22 +14,47 @@ import AuthLayout from "../../components/AuthLayout/AuthLayout.jsx";
 
 function RegisterPage() {
     const navigate = useNavigate();
+    const { loginAuth } = useAuth();
     const {
         email, password, confirm,
         emailError, passwordError, confirmError,
         emailState, passwordState, confirmState,
-        handleEmailChange,
-        handlePasswordChange,
-        handleConfirmChange,
+        handleEmailChange: onEmailChange,
+        handlePasswordChange: onPasswordChange,
+        handleConfirmChange: onConfirmChange,
         validateAll,
-    } = useRegisterValidation();
+    } = useRegisterValidation({ minPasswordLength: 8 });
 
-    const handleSubmit = (e) => {
+    const { mutateAsync, isPending, error, reset } = useRegisterMutation();
+
+    const handleEmailChange = (value) => {
+        reset();
+        onEmailChange(value);
+    };
+
+    const handlePasswordChange = (value) => {
+        reset();
+        onPasswordChange(value);
+    };
+
+    const handleConfirmChange = (value) => {
+        reset();
+        onConfirmChange(value);
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        reset();
+
         if (!validateAll()) return;
 
-        console.log('Register:', { email, password });
-        navigate('/login');
+        try {
+            const auth = await mutateAsync({ email, password });
+            loginAuth(auth);
+            navigate('/login');
+        } catch {
+            // ошибка отображается из состояния мутации
+        }
     };
 
     return (
@@ -58,7 +85,7 @@ function RegisterPage() {
                             label="Пароль"
                             type="password"
                             icon="lock"
-                            placeholder="Минимум 6 символов"
+                            placeholder="Минимум 8 символов"
                             autoComplete="new-password"
                             value={password}
                             onChange={handlePasswordChange}
@@ -81,8 +108,15 @@ function RegisterPage() {
                         state={confirmState}
                     />
 
-                    <Button type="submit" variant="primary" icon={<RegisterIcon />}>
-                        Зарегистрироваться
+                    {error && <div className="form-error">{error.message}</div>}
+
+                    <Button
+                        type="submit"
+                        variant="primary"
+                        icon={<RegisterIcon />}
+                        disabled={isPending}
+                    >
+                        {isPending ? 'Создание аккаунта…' : 'Зарегистрироваться'}
                     </Button>
                 </form>
 

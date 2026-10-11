@@ -2,7 +2,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import './ProductGrid.css';
 import PropTypes from "prop-types";
 
-function ProductGrid({ products, getCategoryName, onAdd }) {
+function ProductGrid({ products, getCategoryName, onAdd, adding = false }) {
     if (products.length === 0) {
         return (
             <div className="empty-state show">
@@ -31,6 +31,7 @@ function ProductGrid({ products, getCategoryName, onAdd }) {
                     product={p}
                     categoryName={getCategoryName(p.category)}
                     onAdd={onAdd}
+                    adding={adding}
                 />
             ))}
         </div>
@@ -41,10 +42,10 @@ ProductGrid.propTypes = {
     products: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-            category: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            category: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.number]).isRequired,
             title: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired,
-            oldPrice: PropTypes.number,
+            previousPrice: PropTypes.number,
             rating: PropTypes.number.isRequired,
             reviews: PropTypes.number.isRequired,
             emoji: PropTypes.string.isRequired,
@@ -53,6 +54,7 @@ ProductGrid.propTypes = {
     ).isRequired,
     getCategoryName: PropTypes.func.isRequired,
     onAdd: PropTypes.func.isRequired,
+    adding: PropTypes.bool,
 };
 
 

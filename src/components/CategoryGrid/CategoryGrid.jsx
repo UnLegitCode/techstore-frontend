@@ -1,8 +1,7 @@
-import { categories } from '../../data/products';
 import './CategoryGrid.css';
 import PropTypes from "prop-types";
 
-function CategoryGrid({ onSelect }) {
+function CategoryGrid({ categories, onSelect }) {
     return (
         <div className="category-grid">
             {categories.map((cat) => (
@@ -13,7 +12,7 @@ function CategoryGrid({ onSelect }) {
                     onClick={() => onSelect(cat.id)}
                 >
                     <span className="category-emoji">{cat.emoji}</span>
-                    <span className="category-name">{cat.name}</span>
+                    <span className="category-name">{cat.title}</span>
                 </button>
             ))}
         </div>
@@ -21,6 +20,13 @@ function CategoryGrid({ onSelect }) {
 }
 
 CategoryGrid.propTypes = {
+    categories: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            title: PropTypes.string.isRequired,
+            emoji: PropTypes.string.isRequired,
+        })
+    ).isRequired,
     onSelect: PropTypes.func.isRequired,
 };
 

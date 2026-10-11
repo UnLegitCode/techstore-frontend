@@ -4,6 +4,8 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Divider from '../../components/Divider/Divider';
 import { useAuthValidation } from '../../hooks/useAuthValidation';
+import { useLoginMutation } from '../../hooks/mutations/useLoginMutation';
+import { useAuth } from '../../contexts/AuthContext';
 import './LoginPage.css';
 import RegisterIcon from "../../components/Icons/RegisterIcon.jsx";
 import LoginIcon from "../../components/Icons/LoginIcon.jsx";
@@ -12,6 +14,7 @@ import AuthLayout from "../../components/AuthLayout/AuthLayout.jsx";
 
 function LoginPage() {
     const navigate = useNavigate();
+    const { loginAuth } = useAuth();
     const {
         email,
         password,
@@ -19,17 +22,36 @@ function LoginPage() {
         passwordError,
         emailState,
         passwordState,
-        handleEmailChange,
-        handlePasswordChange,
+        handleEmailChange: onEmailChange,
+        handlePasswordChange: onPasswordChange,
         validateAll,
     } = useAuthValidation();
 
-    const handleSubmit = (e) => {
+    const { mutateAsync, isPending, error, reset } = useLoginMutation();
+
+    const handleEmailChange = (value) => {
+        reset();
+        onEmailChange(value);
+    };
+
+    const handlePasswordChange = (value) => {
+        reset();
+        onPasswordChange(value);
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        reset();
+
         if (!validateAll()) return;
 
-        console.log('Login:', { email, password });
-        navigate('/account');
+        try {
+            const auth = await mutateAsync({ email, password });
+            loginAuth(auth);
+            navigate('/');
+        } catch {
+            // ошибка отображается из состояния мутации
+        }
     };
 
     return (
@@ -67,25 +89,15 @@ function LoginPage() {
                         state={passwordState}
                     />
 
-                    <div className="form-extras">
-                        <div className="checkbox-group">
-                            <input type="checkbox" id="remember" name="remember" />
-                            <label htmlFor="remember">Запомнить меня</label>
-                        </div>
-                        <a
-                            href="/recover"
-                            className="forgot-link"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                navigate('/recover');
-                            }}
-                        >
-                            Забыли пароль?
-                        </a>
-                    </div>
+                    {error && <div className="form-error">{error.message}</div>}
 
-                    <Button type="submit" variant="primary" icon={<LoginIcon />}>
-                        Войти
+                    <Button
+                        type="submit"
+                        variant="primary"
+                        icon={<LoginIcon />}
+                        disabled={isPending}
+                    >
+                        {isPending ? 'Вход…' : 'Войти'}
                     </Button>
                 </form>
 

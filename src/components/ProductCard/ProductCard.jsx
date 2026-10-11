@@ -1,11 +1,11 @@
-import {formatters} from '../../utils/formatters.js';
-import {renderers} from '../../utils/renderers.js';
+import { formatters } from '../../utils/formatters.js';
+import { renderers } from '../../utils/renderers.js';
 import './ProductCard.css';
 import PlusIcon from "../Icons/PlusIcon.jsx";
 import PropTypes from "prop-types";
 
-function ProductCard({product, categoryName, onAdd}) {
-    const {title, price, oldPrice, rating, reviews, emoji, badge} = product;
+function ProductCard({ product, categoryName, onAdd, adding = false }) {
+    const { title, price, previousPrice, rating, reviews, emoji, badge } = product;
 
     return (
         <article className="product-card">
@@ -24,12 +24,13 @@ function ProductCard({product, categoryName, onAdd}) {
                 <div className="product-footer">
                     <div className="product-price">
                         <span className="price-current">{formatters(price)}</span>
-                        {oldPrice && <span className="price-old">{formatters(oldPrice)}</span>}
+                        {previousPrice != null && <span className="price-old">{formatters(previousPrice)}</span>}
                     </div>
                     <button
                         type="button"
                         className="add-to-cart"
                         onClick={() => onAdd(product)}
+                        disabled={adding}
                         aria-label="Добавить в корзину"
                     >
                         <PlusIcon/>
@@ -42,9 +43,10 @@ function ProductCard({product, categoryName, onAdd}) {
 
 ProductCard.propTypes = {
     product: PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
-        oldPrice: PropTypes.number,
+        previousPrice: PropTypes.number,
         rating: PropTypes.number.isRequired,
         reviews: PropTypes.number.isRequired,
         emoji: PropTypes.string.isRequired,
@@ -52,6 +54,7 @@ ProductCard.propTypes = {
     }).isRequired,
     categoryName: PropTypes.string.isRequired,
     onAdd: PropTypes.func.isRequired,
+    adding: PropTypes.bool,
 };
 
 export default ProductCard;
