@@ -33,7 +33,6 @@ function HomePage() {
     });
 
     const products = productsPage?.content ?? [];
-    // const pageInfo = productsPage?.page;
 
     const handleCategorySelect = (id) => {
         setFilter(id);
