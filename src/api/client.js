@@ -1,6 +1,6 @@
 import { getAuthToken } from '../utils/authStorage';
 
-const API_BASE_URL = 'http://81.26.178.20:8080/api';
+const API_BASE_URL = 'http://51.250.68.1:8080/api';
 
 export async function apiRequest(path, { method = 'GET', body } = {}) {
     const options = {
